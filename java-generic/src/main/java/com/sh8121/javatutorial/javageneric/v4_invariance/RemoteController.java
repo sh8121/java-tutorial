@@ -1,4 +1,4 @@
-package com.sh8121.javatutorial.javageneric.v1;
+package com.sh8121.javatutorial.javageneric.v4_invariance;
 
 public class RemoteController<Device> {
 

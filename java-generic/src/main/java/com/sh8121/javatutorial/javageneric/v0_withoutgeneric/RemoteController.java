@@ -1,4 +1,4 @@
-package com.sh8121.javatutorial.javageneric.v0;
+package com.sh8121.javatutorial.javageneric.v0_withoutgeneric;
 
 public class RemoteController {
 

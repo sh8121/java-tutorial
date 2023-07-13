@@ -1,7 +1,7 @@
-package com.sh8121.javatutorial.javageneric.v0;
+package com.sh8121.javatutorial.javageneric.v0_withoutgeneric;
 
-import com.sh8121.javatutorial.javageneric.model.Radio;
-import com.sh8121.javatutorial.javageneric.model.Tv;
+import com.sh8121.javatutorial.javageneric.model.v0.Radio;
+import com.sh8121.javatutorial.javageneric.model.v0.Tv;
 
 public class App {
 

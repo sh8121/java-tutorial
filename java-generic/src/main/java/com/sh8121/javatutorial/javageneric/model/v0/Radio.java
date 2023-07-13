@@ -1,4 +1,4 @@
-package com.sh8121.javatutorial.javageneric.model;
+package com.sh8121.javatutorial.javageneric.model.v0;
 
 public class Radio {
 

@@ -1,6 +1,6 @@
-package com.sh8121.javatutorial.javageneric.model;
+package com.sh8121.javatutorial.javageneric.model.v1;
 
-public class Tv {
+public class Tv extends Electronics {
 
     private String title;
 
