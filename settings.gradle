@@ -1,3 +1,4 @@
 rootProject.name = 'java-tutorial'
 include 'java-generic'
+include 'java-reactive'
 
