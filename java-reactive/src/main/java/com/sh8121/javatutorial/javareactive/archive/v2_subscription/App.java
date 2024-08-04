@@ -1,15 +1,17 @@
-package com.sh8121.javatutorial.javareactive.v0_basic;
+package com.sh8121.javatutorial.javareactive.archive.v2_subscription;
 
 import java.util.concurrent.Flow.Subscriber;
 import java.util.concurrent.Flow.Subscription;
 import java.util.concurrent.SubmissionPublisher;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class App {
 
     public static void main(String[] args) throws InterruptedException {
         var publisher = new SubmissionPublisher<String>();
-        var subscriber1 = new EndSubscriber("subscriber1");
-        var subscriber2 = new EndSubscriber("subscriber2");
+        var subscriber1 = new EndSubscriber("subscriber1", 3);
+        var subscriber2 = new EndSubscriber("subscriber2", 4);
+
         publisher.subscribe(subscriber1);
         publisher.subscribe(subscriber2);
 
@@ -25,23 +27,31 @@ public class App {
     static class EndSubscriber implements Subscriber<String> {
 
         private String name;
+        private AtomicInteger number;
         private Subscription subscription;
 
-        public EndSubscriber(String name) {
+        public EndSubscriber(String name, int number) {
             this.name = name;
+            this.number = new AtomicInteger(number);
         }
 
         @Override
         public void onSubscribe(Subscription subscription) {
             System.out.printf("%s Subscribe At %s\n", name, Thread.currentThread());
             this.subscription = subscription;
-            this.subscription.request(1);
+            if (this.number.get() > 0) {
+                this.subscription.request(1);
+                this.number.getAndDecrement();
+            }
         }
 
         @Override
         public void onNext(String item) {
             System.out.printf("%s Received: %s At %s\n", name, item, Thread.currentThread());
-            subscription.request(1);
+            if (this.number.get() > 0) {
+                this.subscription.request(1);
+                this.number.decrementAndGet();
+            }
         }
 
         @Override
