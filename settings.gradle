@@ -3,4 +3,5 @@ include 'java-generic'
 include 'java-reactive'
 include 'java-io'
 include 'java-multithreading'
+include 'java-projectreactor'
 
